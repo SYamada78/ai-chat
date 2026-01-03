@@ -2,6 +2,8 @@
 
 エンターテイメント向けAIチャットボット
 
+[![GitHub](https://img.shields.io/badge/GitHub-ai--chat-blue?logo=github)](https://github.com/SYamada78/ai-chat)
+
 ## 概要
 
 Next.js App Router + Hono + Prisma + MongoDB + Claude APIを使用したフレンドリーで親しみやすいAIチャットボットアプリケーション。
