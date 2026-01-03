@@ -33,10 +33,11 @@ Next.js App Router + Hono + Prisma + MongoDB + Claude APIを使用したフレ�
 ai-chat/
 ├── frontend/          # Next.jsフロントエンド
 ├── backend/           # Honoバックエンド
-├── docs/             # ドキュメント
-├── CLAIDE.md         # プロジェクト仕様書
-├── TODO.md           # 実行計画・TODOリスト
-└── MONGODB_SETUP.md  # MongoDB Atlasセットアップガイド
+├── docs/              # ドキュメント
+│   ├── CLAUDE.md      # プロジェクト仕様書
+│   └── MONGODB_SETUP.md  # MongoDB Atlasセットアップガイド
+├── TODO.md            # 実行計画・TODOリスト
+└── README.md          # このファイル
 ```
 
 ## セットアップ
@@ -75,9 +76,9 @@ npm run dev
 
 ## ドキュメント
 
-- [CLAIDE.md](./CLAIDE.md) - プロジェクト仕様書
+- [docs/CLAUDE.md](./docs/CLAUDE.md) - プロジェクト仕様書
 - [TODO.md](./TODO.md) - 実行計画とTODOリスト
-- [MONGODB_SETUP.md](./MONGODB_SETUP.md) - MongoDB Atlasセットアップガイド
+- [docs/MONGODB_SETUP.md](./docs/MONGODB_SETUP.md) - MongoDB Atlasセットアップガイド
 
 ## ライセンス
 

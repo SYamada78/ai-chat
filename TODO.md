@@ -41,114 +41,86 @@ Next.js App Router + Hono + Prisma + MongoDB + Claude APIを使用したエン�
 ## 🏗️ Phase 1: プロジェクトセットアップ
 
 ### 1.1 プロジェクト構造の作成
-- [ ] プロジェクトルートディレクトリの作成
-- [ ] `frontend/` ディレクトリの作成
-- [ ] `backend/` ディレクトリの作成
-- [ ] `.gitignore` ファイルの作成
-- [ ] `README.md` の作成
+- [x] プロジェクトルートディレクトリの作成 ✅
+- [x] `frontend/` ディレクトリの作成 ✅
+- [x] `backend/` ディレクトリの作成 ✅
+- [x] `.gitignore` ファイルの作成 ✅
+- [x] `README.md` の作成 ✅
 
 ### 1.2 フロントエンド（Next.js）のセットアップ
-- [ ] Next.js プロジェクトの初期化
-  ```bash
-  cd frontend
-  npx create-next-app@latest . --typescript --tailwind --app --no-src
-  ```
-- [ ] 必要な依存パッケージのインストール
-  ```bash
-  npm install @tanstack/react-query axios date-fns
-  npm install -D @types/node
-  ```
-- [ ] Tailwind CSS の設定確認・調整
-- [ ] `tsconfig.json` の設定確認
-- [ ] ディレクトリ構造の作成
-  - [ ] `app/` (App Router)
-  - [ ] `components/`
-  - [ ] `hooks/`
-  - [ ] `lib/`
-  - [ ] `types/`
+- [x] Next.js プロジェクトの初期化 ✅
+  - package.json, next.config.ts, tsconfig.json作成済み
+- [x] 必要な依存パッケージの設定 ✅
+  - axios, date-fns を package.json に追加済み
+- [x] Tailwind CSS の設定確認・調整 ✅
+- [x] `tsconfig.json` の設定確認 ✅
+- [x] ディレクトリ構造の作成 ✅
+  - [x] `app/` (App Router)
+  - [ ] `components/` (Phase 3で作成)
+  - [ ] `hooks/` (Phase 3で作成)
+  - [ ] `lib/` (Phase 3で作成)
+  - [ ] `types/` (Phase 3で作成)
 
 ### 1.3 バックエンド（Hono）のセットアップ
-- [ ] Node.js プロジェクトの初期化
-  ```bash
-  cd backend
-  npm init -y
-  ```
-- [ ] TypeScript の設定
-  ```bash
-  npm install -D typescript @types/node tsx
-  npx tsc --init
-  ```
-- [ ] Hono と関連パッケージのインストール
-  ```bash
-  npm install hono
-  npm install @hono/node-server
-  npm install @anthropic-ai/sdk
-  npm install dotenv
-  ```
-- [ ] Prisma のセットアップ
-  ```bash
-  npm install prisma @prisma/client
-  npx prisma init
-  ```
-- [ ] `tsconfig.json` の設定
-- [ ] ディレクトリ構造の作成
-  - [ ] `src/`
-  - [ ] `src/routes/`
-  - [ ] `src/services/`
-  - [ ] `src/middlewares/`
-  - [ ] `src/utils/`
-  - [ ] `src/types/`
+- [x] Node.js プロジェクトの初期化 ✅
+  - package.json作成済み
+- [x] TypeScript の設定 ✅
+  - tsconfig.json作成済み
+- [x] Hono と関連パッケージの設定 ✅
+  - hono, @hono/node-server, @anthropic-ai/sdk, dotenv を package.json に追加済み
+- [x] Prisma のセットアップ ✅
+  - prisma/schema.prisma 作成済み
+- [x] `tsconfig.json` の設定 ✅
+- [x] ディレクトリ構造の作成 ✅
+  - [x] `src/`
+  - [x] `src/routes/`
+  - [x] `src/services/`
+  - [x] `src/middlewares/`
+  - [x] `src/utils/`
+  - [x] `src/types/`
+  - [x] `src/lib/`
 
 ### 1.4 環境変数の設定
-- [ ] フロントエンド `.env.local` の作成
-  ```
-  NEXT_PUBLIC_API_URL=http://localhost:3001
-  ```
-- [ ] バックエンド `.env` の作成
-  ```
-  DATABASE_URL="mongodb+srv://..."
-  CLAUDE_API_KEY="sk-ant-..."
-  PORT=3001
-  CORS_ORIGIN=http://localhost:3000
-  ```
-- [ ] `.env.example` ファイルの作成（両方）
+- [x] フロントエンド `.env.local.example` の作成 ✅
+- [x] バックエンド `.env.example` の作成 ✅
+- [x] `.gitignore` で環境変数ファイルを除外設定 ✅
 
 ### 1.5 Git リポジトリの初期化
-- [ ] `git init` の実行
-- [ ] 初回コミット
-- [ ] GitHubリポジトリへのプッシュ
+- [x] `git init` の実行 ✅
+- [x] 初回コミット ✅
+- [x] GitHubリポジトリへのプッシュ ✅
 
 ---
 
 ## 🔧 Phase 2: バックエンド開発
 
 ### 2.1 Prisma スキーマ定義
-- [ ] `prisma/schema.prisma` の作成
-  - [ ] MongoDB プロバイダー設定
-  - [ ] Conversation モデルの定義
-  - [ ] Message モデルの定義
-  - [ ] リレーションの設定
+- [x] `prisma/schema.prisma` の作成 ✅
+  - [x] MongoDB プロバイダー設定
+  - [x] Conversation モデルの定義
+  - [x] Message モデルの定義
+  - [x] リレーションの設定
 - [ ] Prisma Client の生成
   ```bash
-  npx prisma generate
+  cd backend && npm install && npx prisma generate
   ```
 - [ ] データベースの接続確認
 
 ### 2.2 基本的なサーバー構造の実装
-- [ ] `src/index.ts` の作成
-  - [ ] Hono アプリケーションの初期化
-  - [ ] CORS ミドルウェアの設定
-  - [ ] エラーハンドリングミドルウェア
-  - [ ] サーバーの起動処理
+- [x] `src/index.ts` の作成 ✅
+  - [x] Hono アプリケーションの初期化
+  - [x] CORS ミドルウェアの設定
+  - [x] サーバーの起動処理
+  - [ ] エラーハンドリングミドルウェア（Phase 2で実装）
 - [ ] 型定義ファイル `src/types/index.ts` の作成
   - [ ] API レスポンス型
   - [ ] リクエストボディ型
   - [ ] エラー型
 
 ### 2.3 Prisma クライアントのセットアップ
-- [ ] `src/lib/prisma.ts` の作成
-  - [ ] シングルトンパターンでPrismaClientを初期化
-  - [ ] 接続管理
+- [x] `src/lib/prisma.ts` の作成 ✅
+  - [x] シングルトンパターンでPrismaClientを初期化
+  - [x] 接続管理
 
 ### 2.4 Claude API サービスの実装
 - [ ] `src/services/claude.service.ts` の作成
@@ -488,26 +460,26 @@ Next.js App Router + Hono + Prisma + MongoDB + Claude APIを使用したエン�
 
 ### 完了したフェーズ
 - [x] Phase 0: 事前準備 ✅
-- [ ] Phase 1: プロジェクトセットアップ
+- [x] Phase 1: プロジェクトセットアップ ✅
 - [ ] Phase 2: バックエンド開発
 - [ ] Phase 3: フロントエンド開発
 - [ ] Phase 4: 統合とテスト
 - [ ] Phase 5: デプロイ準備
 
 ### 現在のフェーズ
-**Phase 1: プロジェクトセットアップ**
+**Phase 2: バックエンド開発**
 
 ### 次のアクション
-1. ✅ ~~Claude API Key の取得~~ - 完了
-2. ✅ ~~MongoDB Atlas のセットアップ~~ - 完了
-3. ✅ ~~GitHubリポジトリの作成~~ - 完了
-4. Phase 1: プロジェクトセットアップ開始
-   - プロジェクトディレクトリの作成
-   - フロントエンド（Next.js）のセットアップ
-   - バックエンド（Hono）のセットアップ
+1. ✅ ~~Phase 0: 事前準備~~ - 完了
+2. ✅ ~~Phase 1: プロジェクトセットアップ~~ - 完了
+3. Phase 2: バックエンド開発
+   - 依存パッケージのインストール (npm install)
+   - Prisma Client の生成
+   - Claude API サービスの実装
+   - チャットAPIエンドポイントの実装
 
 ---
 
 **最終更新日**: 2026-01-03
-**バージョン**: 1.3
-**更新内容**: Phase 0 完全完了。GitHubリポジトリ作成完了。Phase 1へ
+**バージョン**: 1.4
+**更新内容**: Phase 1 完了。フロントエンド・バックエンドのプロジェクト構造を構築
