@@ -2,6 +2,11 @@ import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import dotenv from 'dotenv';
+import healthRoutes from './routes/health';
+import chatRoutes from './routes/chat';
+import conversationsRoutes from './routes/conversations';
+import { errorHandler } from './middlewares/error';
+import { logger } from './utils/logger';
 
 dotenv.config();
 
@@ -13,14 +18,6 @@ app.use('/*', cors({
   credentials: true,
 }));
 
-// ヘルスチェック
-app.get('/api/health', (c) => {
-  return c.json({
-    status: 'ok',
-    timestamp: new Date().toISOString(),
-  });
-});
-
 // ルートエンドポイント
 app.get('/', (c) => {
   return c.json({
@@ -29,9 +26,17 @@ app.get('/', (c) => {
   });
 });
 
+// API ルート
+app.route('/api/health', healthRoutes);
+app.route('/api/chat', chatRoutes);
+app.route('/api/conversations', conversationsRoutes);
+
+// エラーハンドリング
+app.onError(errorHandler);
+
 const port = Number(process.env.PORT) || 3001;
 
-console.log(`Server is running on port ${port}`);
+logger.info(`Server is starting on port ${port}`);
 
 serve({
   fetch: app.fetch,
